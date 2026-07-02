@@ -1,0 +1,80 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-primary: #1da4e0;
+  --color-primary-dark: #158bc2;
+  --color-primary-light: #e8f7fe;
+  --color-accent: #f8d03f;
+  --color-accent-dark: #e6bc2a;
+  --color-charcoal: #111827;
+  --color-muted: #4b5563;
+  --color-subtle: #6b7280;
+  --color-surface: #f8fafc;
+  --color-border: #e5e7eb;
+
+  --font-sans: 'Plus Jakarta Sans', 'Inter', system-ui, -apple-system, sans-serif;
+
+  --shadow-card: 0 4px 16px rgba(17, 24, 39, 0.08);
+  --shadow-card-hover: 0 12px 40px rgba(39, 184, 245, 0.15);
+  --shadow-nav: 0 1px 20px rgba(17, 24, 39, 0.06);
+
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-pulse-glow: pulse-glow 4s ease-in-out infinite;
+  --animate-slide: slide 30s linear infinite;
+
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-12px);
+    }
+  }
+
+  @keyframes pulse-glow {
+    0%,
+    100% {
+      opacity: 0.4;
+    }
+    50% {
+      opacity: 0.8;
+    }
+  }
+
+  @keyframes slide {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-33.33%);
+    }
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+    overflow-x: hidden;
+  }
+
+  body {
+    @apply bg-white font-sans text-charcoal font-medium antialiased;
+    overflow-x: hidden;
+  }
+}
+
+@layer utilities {
+  .section-padding {
+    @apply py-12 md:py-16 lg:py-20;
+  }
+
+  .animate-in {
+    @apply translate-y-6 opacity-0 transition-all duration-700 ease-out;
+  }
+
+  .animate-in.visible {
+    @apply translate-y-0 opacity-100;
+  }
+}
