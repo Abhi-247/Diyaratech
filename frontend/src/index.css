@@ -20,7 +20,7 @@
 
   --animate-float: float 6s ease-in-out infinite;
   --animate-pulse-glow: pulse-glow 4s ease-in-out infinite;
-  --animate-slide: slide 30s linear infinite;
+  --animate-slide: slide 15s linear infinite;
 
   @keyframes float {
     0%,
@@ -55,7 +55,7 @@
 @layer base {
   html {
     scroll-behavior: smooth;
-    scroll-padding-top: 5rem;
+    scroll-padding-top: 4rem;
     overflow-x: hidden;
   }
 
@@ -77,4 +77,33 @@
   .animate-in.visible {
     @apply translate-y-0 opacity-100;
   }
+}
+
+@keyframes highlight-pulse {
+  0% {
+    box-shadow: 0 0 0 0px rgba(29, 164, 224, 0);
+    transform: scale(1);
+    border-color: var(--color-border);
+  }
+  20% {
+    box-shadow: 0 0 0 8px rgba(29, 164, 224, 0.3);
+    transform: scale(1.03);
+    border-color: var(--color-primary);
+  }
+  80% {
+    box-shadow: 0 0 0 8px rgba(29, 164, 224, 0.3);
+    transform: scale(1.03);
+    border-color: var(--color-primary);
+  }
+  100% {
+    box-shadow: 0 0 0 0px rgba(29, 164, 224, 0);
+    transform: scale(1);
+    border-color: var(--color-border);
+  }
+}
+
+.service-highlight {
+  animation: highlight-pulse 2.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  z-index: 10;
+  position: relative;
 }

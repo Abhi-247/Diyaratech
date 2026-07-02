@@ -13,12 +13,11 @@ import {
 } from 'lucide-react'
 
 export const navLinks = [
-  { label: 'Home', href: '#home' },
-  { label: 'Services', href: '#services' },
-  { label: 'Hire Developers', href: '#hire-developers' },
-  { label: 'Industries', href: '#industries' },
-  { label: 'About Us', href: '#about' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Services', href: '/#services' },
+  { label: 'Hire Developers', href: '/hire-developers' },
+  { label: 'Industries', href: '/industries' },
+  { label: 'About Us', href: '/#about' },
+  { label: 'Contact', href: '/contact' },
 ]
 
 export const stats = [
@@ -169,20 +168,7 @@ export const services: Service[] = [
       'Mobile Testing',
     ],
   },
-  {
-    icon: Headphones,
-    title: 'IT Support & Maintenance',
-    description:
-      'Continuous support to keep your systems secure, stable, and optimized.',
-    items: [
-      'Technical Support',
-      'Application Maintenance',
-      'Server Monitoring',
-      'Bug Fixes',
-      'Performance Optimization',
-      'Version Upgrades',
-    ],
-  },
+
 ]
 
 export const developers = [
@@ -264,8 +250,6 @@ export const whyChoose = [
   'NDA & Data Security',
   'Fast Project Delivery',
   'Scalable Teams',
-  'Cost-Effective Solutions',
-  'Long-Term Technology Partnership',
 ]
 
 export const processSteps = [
@@ -282,26 +266,26 @@ export const processSteps = [
 export const testimonials = [
   {
     quote:
-      'Diyaratech delivered a scalable enterprise platform ahead of schedule. Their team integrated seamlessly with ours and maintained exceptional communication throughout.',
-    name: 'Rajesh Kumar',
-    role: 'CTO',
-    company: 'TechNova Solutions Pvt Ltd',
+      'Diyaratech built the entire Winkget platform from the ground up — from web to mobile. Their team understood our vision perfectly and delivered a polished, scalable product that our users love. Truly a reliable technology partner.',
+    name: 'Utkarsh',
+    role: 'Founder',
+    company: 'Winkget',
     rating: 5,
   },
   {
     quote:
-      'We needed dedicated developers fast, and Diyaratech provided top-tier talent within days. The quality of work and professionalism exceeded our expectations.',
-    name: 'Priya Sharma',
-    role: 'VP of Engineering',
-    company: 'HealthCare India Systems',
+      'Working with Diyaratech on Pstatistics Tutorials was a seamless experience. They developed a robust, user-friendly educational platform with excellent attention to detail. Their professionalism and timely delivery exceeded all expectations.',
+    name: 'Dr. Pankaj Kumar',
+    role: 'Founder',
+    company: 'Pstatistics Tutorials',
     rating: 5,
   },
   {
     quote:
-      'From cloud migration to ongoing support, Diyaratech has been a reliable technology partner. Their flexible engagement model saved us significant time and cost.',
-    name: 'Amit Patel',
-    role: 'Director of Digital',
-    company: 'RetailMart India',
+      'Diyaratech transformed our idea into a fully functional platform for WensWork. Their dedicated team was responsive, technically skilled, and always went the extra mile. I highly recommend them for any serious development project.',
+    name: 'Wen Moreno',
+    role: 'Founder',
+    company: 'WensWork',
     rating: 5,
   },
 ]
@@ -378,12 +362,15 @@ export const budgetOptions = [
 
 export const footerLinks = {
   quick: navLinks,
-  services: services.slice(0, 6).map((s) => ({ label: s.title, href: '#services' })),
+  services: services.slice(0, 6).map((s) => ({
+    label: s.title,
+    href: `/#service-${s.title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`,
+  })),
   hire: [
-    { label: 'Dedicated Developers', href: '#hire-developers' },
-    { label: 'Dedicated Teams', href: '#hire-developers' },
-    { label: 'Staff Augmentation', href: '#hire-developers' },
-    { label: 'Project-Based', href: '#hire-developers' },
+    { label: 'Dedicated Developers', href: '/hire-developers' },
+    { label: 'Dedicated Teams', href: '/hire-developers' },
+    { label: 'Staff Augmentation', href: '/hire-developers' },
+    { label: 'Project-Based', href: '/hire-developers' },
   ],
 }
 
@@ -395,8 +382,8 @@ export const socialLinks = [
 ]
 
 export const partners = [
-  { name: 'Winkget', logo: 'Winkget' },
+  { name: 'Winkget', logo: 'Winkget', image: 'winkgetlogo.png' },
   { name: 'Pstatistics Tutorials', logo: 'Pstatistics' },
-  { name: 'Winkget Express', logo: 'Winkget Express' },
-  { name: 'WensWork', logo: 'WensWork' },
+  { name: 'Winkget Express', logo: 'Winkget Express', image: 'winkgetlogo.png' },
+  { name: 'WensWork', logo: 'WensWork', image: 'wenswork.png' },
 ]

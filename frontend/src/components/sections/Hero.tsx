@@ -12,9 +12,9 @@ const SLIDES = [
     subtitle: 'Build, scale, and modernize your business with dedicated technology experts and flexible contract-based IT services.',
     description: 'Whether you need a complete development team, a dedicated developer, or specialized technology experts for a short-term or long-term project, we help businesses accelerate digital transformation with reliable, cost-effective, and scalable solutions.',
     primaryBtnText: 'Get Free Consultation',
-    primaryBtnHref: '#contact',
+    primaryBtnHref: '/contact',
     secondaryBtnText: 'Hire Dedicated Experts',
-    secondaryBtnHref: '#hire-developers'
+    secondaryBtnHref: '/hire-developers'
   },
   {
     image: 'https://images.unsplash.com/photo-1522071901873-411886a10004?q=80&w=1920&h=1080&auto=format&fit=crop',
@@ -24,9 +24,9 @@ const SLIDES = [
     subtitle: 'Access a vetted pool of software engineers, designers, and project managers ready to integrate with your workflow.',
     description: 'We match you with specialists in React, Node.js, Python, Cloud Infrastructure, and more. Complete team scaling in days, not months, with full administrative and operational support.',
     primaryBtnText: 'Hire Dedicated Experts',
-    primaryBtnHref: '#hire-developers',
+    primaryBtnHref: '/hire-developers',
     secondaryBtnText: 'Explore Our Services',
-    secondaryBtnHref: '#services'
+    secondaryBtnHref: '/#services'
   },
   {
     image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=1920&h=1080&auto=format&fit=crop',
@@ -36,9 +36,9 @@ const SLIDES = [
     subtitle: 'Deploy scalable cloud networks, secure backend systems, and high-performance user interfaces.',
     description: 'From legacy software migration to greenfield product development, our expert engineers design architectures that handle millions of requests with optimal speed, security, and uptime.',
     primaryBtnText: 'Get Free Consultation',
-    primaryBtnHref: '#contact',
+    primaryBtnHref: '/contact',
     secondaryBtnText: 'Why Choose Us',
-    secondaryBtnHref: '#why-choose-us'
+    secondaryBtnHref: '/#why-choose-us'
   }
 ]
 
@@ -71,7 +71,7 @@ export function Hero() {
   return (
     <AnimatedSection
       id="home"
-      className="relative overflow-hidden bg-slate-950 pt-20 md:pt-24 min-h-[650px] md:min-h-[700px] flex items-center"
+      className="relative overflow-hidden bg-slate-950 pt-16 md:pt-20 min-h-[650px] md:min-h-[700px] flex items-center"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -104,8 +104,8 @@ export function Hero() {
               <div
                 key={idx}
                 className={`col-start-1 row-start-1 transition-all duration-1000 ease-in-out w-full flex flex-col items-center text-center ${isActive
-                    ? 'opacity-100 translate-y-0 pointer-events-auto z-10'
-                    : 'opacity-0 translate-y-8 pointer-events-none z-0'
+                  ? 'opacity-100 translate-y-0 pointer-events-auto z-10'
+                  : 'opacity-0 translate-y-8 pointer-events-none z-0'
                   }`}
               >
                 <span className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 backdrop-blur-md px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-accent shadow-md">
@@ -124,9 +124,7 @@ export function Hero() {
                   {slide.subtitle}
                 </p>
 
-                <p className="mt-4 max-w-2xl text-xs md:text-sm leading-relaxed text-slate-400">
-                  {slide.description}
-                </p>
+
 
                 <div className="mt-8 flex flex-col gap-3.5 sm:flex-row sm:items-center justify-center w-full sm:w-auto">
                   <Button href={slide.primaryBtnHref} size="lg">

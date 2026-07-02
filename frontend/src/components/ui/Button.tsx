@@ -1,4 +1,5 @@
 import type { ButtonHTMLAttributes, MouseEventHandler, ReactNode } from 'react'
+import { Link } from 'react-router-dom'
 
 type ButtonVariant = 'primary' | 'secondary' | 'outline' | 'ghost'
 type ButtonSize = 'sm' | 'md' | 'lg'
@@ -39,6 +40,14 @@ export function Button({
   const classes = `inline-flex items-center justify-center gap-2 rounded-xl font-semibold transition-all duration-300 cursor-pointer ${variants[variant]} ${sizes[size]} ${className}`
 
   if (href) {
+    // Use React Router Link for internal routes, plain <a> for hash/external links
+    if (href.startsWith('/') && !href.startsWith('/#')) {
+      return (
+        <Link to={href} className={classes} onClick={onClick}>
+          {children}
+        </Link>
+      )
+    }
     return (
       <a href={href} className={classes} onClick={onClick}>
         {children}

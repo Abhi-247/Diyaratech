@@ -14,9 +14,14 @@ export function Services() {
         />
 
         <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-          {services.map((service) => (
-            <ServiceCard key={service.title} {...service} />
-          ))}
+          {services.map((service) => {
+            const slug = service.title.toLowerCase().replace(/[^a-z0-9]+/g, '-')
+            return (
+              <div key={service.title} id={`service-${slug}`} className="scroll-mt-24">
+                <ServiceCard {...service} />
+              </div>
+            )
+          })}
         </div>
       </div>
     </AnimatedSection>

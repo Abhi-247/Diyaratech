@@ -1,5 +1,6 @@
 import { useState, type FormEvent } from 'react'
 import { Mail, MapPin, Phone } from 'lucide-react'
+import { Link, useNavigate, useLocation } from 'react-router-dom'
 import logo from '../../assets/logo.png'
 import {
   contactInfo,
@@ -8,6 +9,38 @@ import {
 } from '../../data/content'
 import { Button } from '../ui/Button'
 import { SocialIcon } from '../ui/SocialIcon'
+
+function FooterLink({ href, children, className }: { href: string; children: React.ReactNode; className?: string }) {
+  const navigate = useNavigate()
+  const location = useLocation()
+
+  const handleClick = (e: React.MouseEvent) => {
+    if (href.startsWith('/#')) {
+      e.preventDefault()
+      const hash = href.slice(1)
+      if (location.pathname === '/') {
+        const el = document.querySelector(hash)
+        if (el) el.scrollIntoView({ behavior: 'smooth' })
+      } else {
+        navigate('/' + hash)
+      }
+    }
+  }
+
+  if (href.startsWith('/') && !href.startsWith('/#')) {
+    return (
+      <Link to={href} className={className}>
+        {children}
+      </Link>
+    )
+  }
+
+  return (
+    <a href={href} className={className} onClick={handleClick}>
+      {children}
+    </a>
+  )
+}
 
 export function Footer() {
   const [email, setEmail] = useState('')
@@ -22,7 +55,13 @@ export function Footer() {
       <div className="mx-auto max-w-7xl px-5 py-16 lg:px-8 lg:py-20">
         <div className="grid gap-12 lg:grid-cols-12">
           <div className="lg:col-span-4">
-            <img src={logo} alt="Diyaratech Software" className="h-10" />
+            <Link
+              to="/"
+              className="inline-block rounded-lg bg-white px-3 py-1.5"
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            >
+              <img src={logo} alt="Diyaratech Software" className="h-15" />
+            </Link>
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-gray-400">
               Enterprise contract technology services for businesses worldwide. Build, scale, and
               modernize with dedicated experts you can trust.
@@ -62,9 +101,9 @@ export function Footer() {
               <ul className="space-y-2.5">
                 {footerLinks.quick.map((link) => (
                   <li key={link.href + link.label}>
-                    <a href={link.href} className="text-sm text-gray-400 transition-colors hover:text-primary">
+                    <FooterLink href={link.href} className="text-sm text-gray-400 transition-colors hover:text-primary">
                       {link.label}
-                    </a>
+                    </FooterLink>
                   </li>
                 ))}
               </ul>
@@ -74,9 +113,9 @@ export function Footer() {
               <ul className="space-y-2.5">
                 {footerLinks.services.map((link) => (
                   <li key={link.label}>
-                    <a href={link.href} className="text-sm text-gray-400 transition-colors hover:text-primary">
+                    <FooterLink href={link.href} className="text-sm text-gray-400 transition-colors hover:text-primary">
                       {link.label}
-                    </a>
+                    </FooterLink>
                   </li>
                 ))}
               </ul>
@@ -86,9 +125,9 @@ export function Footer() {
               <ul className="space-y-2.5">
                 {footerLinks.hire.map((link) => (
                   <li key={link.label}>
-                    <a href={link.href} className="text-sm text-gray-400 transition-colors hover:text-primary">
+                    <FooterLink href={link.href} className="text-sm text-gray-400 transition-colors hover:text-primary">
                       {link.label}
-                    </a>
+                    </FooterLink>
                   </li>
                 ))}
               </ul>
@@ -110,7 +149,7 @@ export function Footer() {
                     {contactInfo.branchOffice}
                   </span>
                 </li>
-                
+
               </ul>
             </div>
           </div>
